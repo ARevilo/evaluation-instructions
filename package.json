@@ -8,7 +8,12 @@
         "install:default": "npm install",
         "install:clean": "npm clean-install",
         "start": "node --env-file-if-exists=.env server.js",
-        "start-dev": "nodemon --env-file-if-exists=.env server.js"
+        "start-dev": "nodemon --env-file-if-exists=.env server.js",
+        "build:assets": "copyfiles evaluationapp.service install.md dist",
+        "build:assets-plus": "npm run build:assets && copyfile xml-api/*.yaml ./*.yaml dist",
+        "bundle:cjs": "npm run build:assets && esbuild server.js --platform=node --bundle --minify --outfile=dist/evaluationapp.cjs --format=cjs",
+        "bundle:cjs-plus": "npm run build:assets-plus && esbuild server.js --platform=node --bundle --minify --outfile=dist/evaluationapp.cjs --format=cjs",
+        "bundle:yaml": "npm run build:assets && node build.js"
     },
     "dependencies": {
         "express": "^5.2.1",
@@ -17,6 +22,9 @@
         "js-yaml": "^4.1.1"
     },
     "devDependencies": {
+        "copyfiles": "^2.4.1",
+        "esbuild": "^0.27.4",
+        "esbuild-yaml": "^3.2.1",
         "nodemon": "^3.1.14"
     }
 }
