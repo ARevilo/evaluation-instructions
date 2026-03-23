@@ -1,0 +1,22 @@
+{
+    "name": "evaluation-application",
+    "version": "0.0.1",
+    "description": "Convert static XML to a JSON response",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "install:default": "npm install",
+        "install:clean": "npm clean-install",
+        "start": "node --env-file-if-exists=.env server.js",
+        "start-dev": "nodemon --env-file-if-exists=.env server.js"
+    },
+    "dependencies": {
+        "express": "^5.2.1",
+        "express-openapi-validator": "^5.6.2",
+        "fast-xml-parser": "^5.5.8",
+        "js-yaml": "^4.1.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.14"
+    }
+}
