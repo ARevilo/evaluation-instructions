@@ -48,16 +48,16 @@ Prerequisite: The `dist` folder (generated from the previous section) must be co
 3. Place the bundled output file in the target installation directory
 
    ```bash
-   install -D ./dist/evaluationapp-min.cjs /usr/src/evaluationapp/evaluationapp-min.cjs
+   install -D ./dist/evaluationapp.cjs /usr/src/evaluationapp/evaluationapp.cjs
    ```
 
    - This will create any missing parent directories and set executable permissions automatically
 
    - _If_ you have created a non-root user (not covered) for this application, change the ownership (i.e.):
 
-   ```bash
-   chown -R <youruser>: /usr/src/evaluationapp/
-   ```
+     ```bash
+     chown -R <youruser>: /usr/src/evaluationapp/
+     ```
 
 4. Create the systemd service file to run the application
 
@@ -92,6 +92,6 @@ Prerequisite: The `dist` folder (generated from the previous section) must be co
 
 7. Check the service is running via: `systemctl status evaluationapp`
 8. Test the API via curl or simply entering the URL into a web browser which can reach this server, i.e. \
-   <http://localhost:3000/companies/1> \
-   <http://localhost:3000/companies/2> \
-   <http://localhost:3000/companies/3>
+   <http://localhost:5000/companies/1> \
+   <http://localhost:5000/companies/2> \
+   <http://localhost:5000/companies/3>
