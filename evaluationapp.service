@@ -1,0 +1,23 @@
+[Unit]
+Description=EvaluationApp OpenAPI XML to JSON server
+Requires=network.target
+After=network.target
+StartLimitBurst=5
+
+[Service]
+# Any custom user defined here must have correct file/folder access permissions
+# User=EvaluationApp 
+Type=simple
+Restart=on-failure
+RestartSec=5s
+Environment=NODE_VERSION=24
+ExecStart=/root/.nvm/nvm-exec node /usr/src/evaluationapp/evaluationapp.cjs
+WorkingDirectory=/usr/src/evaluationapp/
+KillMode=control-group
+# Optional: Explicitly specify the production port as an environment variable
+# (Or Alternatively define these in a external .env file)
+Environment=PORT=5000
+EnvironmentFile=-/usr/src/evaluationapp/evaluationapp.env
+
+[Install]
+WantedBy=multi-user.target
